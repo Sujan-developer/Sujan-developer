@@ -1,0 +1,49 @@
+class create_account:
+    account = []    
+    ask_to_create_account = input("Do you wanna create an account? Yes/No: ").lower()
+    
+    while ask_to_create_account not in ["yes", "no"]:
+        ask_to_create_account = input("Please enter 'Yes' or 'No': ").lower()
+        
+    if ask_to_create_account == "yes":
+            name = input("enter your name: ")
+            while not all(char.isalpha() for char in name):
+                print("Your name is not valid.")
+                name = input("enter your name: ")
+            age = int(input("enter your age: "))
+            if age >= 18:
+                print(f"you have successfully created an account {name} and your age is {age}")
+                user_data = {"name": name, "age": age}
+
+class storing_money:
+    @staticmethod
+    def storing_value():
+        storing_money = []
+        asking_to_withdraw_or_deposit = input("Do you want to withdraw or deposit? Withdraw/Deposit: ").lower()
+        while asking_to_withdraw_or_deposit not in ["withdraw", "deposit"]:
+            asking_to_withdraw_or_deposit = input("Please enter 'Withdraw' or 'Deposit': ").lower()
+        
+        if asking_to_withdraw_or_deposit == "withdraw":
+             withdraw = float(input("Enter the amount you want to withdraw: "))
+             if withdraw <= 0:
+                print("Invalid amount")
+             else:
+                storing_money.append(withdraw)
+                print("You have successfully withdrawn", withdraw)
+        elif asking_to_withdraw_or_deposit == "deposit":
+            deposit = float(input("Enter the amount you want to deposit: "))
+            if deposit <= 0:  
+                print("Invalid amount") 
+            else:
+                storing_money.append(deposit)
+                print("You have successfully deposited", deposit)
+
+    @staticmethod
+    def show_balance():
+        show_money = input("Do you want to see your balance? Yes/No: ").lower()
+        while show_money not in ["yes", "no"]:
+            show_money = input("Please enter 'Yes' or 'No': ").lower()
+        if show_money == "yes":
+            print("Your balance is", sum(storing_money))
+
+storing_money.storing_value()
